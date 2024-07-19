@@ -1,0 +1,28 @@
+<div class="max-w-4xl mx-auto mt-10 p-6 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
+  <h2 class="text-3xl font-extrabold mb-6 text-center text-gray-800">Workout List</h2>
+  <div *ngIf="workouts.length > 0; else noWorkouts">
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+        <thead class="bg-gray-200">
+          <tr class="text-gray-700">
+            <th class="py-3 px-4 border-b text-left font-semibold">Username</th>
+            <th class="py-3 px-4 border-b text-left font-semibold">Workouts</th>
+            <th class="py-3 px-4 border-b text-left font-semibold">Number of Workouts</th>
+            <th class="py-3 px-4 border-b text-left font-semibold">Total Workout Minutes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let workout of workouts" class="hover:bg-gray-50 transition duration-300 ease-in-out">
+            <td class="py-3 px-4 border-b text-gray-800">{{ workout.username }}</td>
+            <td class="py-3 px-4 border-b text-gray-800">{{ workout.type }}</td>
+            <td class="py-3 px-4 border-b text-gray-800">{{ getWorkoutCount(workout.type) }}</td>
+            <td class="py-3 px-4 border-b text-gray-800">{{ workout.minutes }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <ng-template #noWorkouts>
+    <p class="text-gray-600 text-center text-lg font-medium">No workouts submitted yet.</p>
+  </ng-template>
+</div>
